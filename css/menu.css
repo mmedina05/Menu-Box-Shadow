@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*,
+*:before,
+*:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --font-menu: 'Roboto', sans-serif;
+    --color-icon-menu: #000000;
+    --color-item-menu: #000000;
+    --fondo-shadow: #FFFFFF;
+}
+.menu{
+    background-color: none;
+    top: 20px;
+    cursor: pointer;
+    height: 60px;
+    right: 30px;
+    position: fixed;
+    transition: box-shadow 1.1s cubic-bezier(.19,1,.22,1);
+    width: 60px;
+}
+
+.fa-bars{
+    position: relative;
+    top: 29px;
+    left: 15px;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-icon-menu);
+    display: block;
+    transform-origin: center;
+    transition: 0.5s ease-in-out;
+}
+.fa-bars::after,
+.fa-bars::before{
+    background-color:var(--color-icon-menu);
+    content: "";
+    display: block;
+    transition: 0.5s ease-in-out;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.fa-bars::before{
+    top: -10px;
+}
+.fa-bars::after{
+    bottom: -10px;
+}
+input{
+    display: none;
+}
+input:checked ~ label .menu{
+    box-shadow: 0 0 0 130vw var(--fondo-shadow), 0 0 0 130vw var(--fondo-shadow);
+    background-color: var(--fondo-shadow);
+    z-index: 9999;
+}
+input:checked ~ label .fa-bars{
+    transform: rotate(45deg);
+}
+input:checked ~ label .fa-bars::after{
+    transform: rotate(90deg);
+    bottom: 0;
+}
+input:checked ~ label .fa-bars::before{
+    transform: rotate(90deg);
+    top: 0;
+}
+input:checked ~ ul{
+    display: block;
+}
+ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    font-size: 45px;
+    display: none;
+    transition: 0.25s 0.1s cubic-bezier(0, 1.07, 0, 1.02);
+    z-index: 99999;
+}
+li a{
+    color: var(--color-item-menu);
+    transform: all 300ms;
+    position: relative;
+    font-family: var(--font-menu);
+}
+li a::before{
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--color-item-menu);
+    transition: all 300ms cubic-bezier(1,0,0,1);
+}
+li a:hover::before{
+    width: 100%;
+}
+li a:hover{
+    color:  #000000;
+}
+a{
+    color: #00cec9;
+    display: block;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
